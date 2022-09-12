@@ -1,0 +1,23 @@
+{
+  "name": "react-native-rn-drawer-example",
+  "displayName": "RnDrawer Example",
+  "expo": {
+    "name": "react-native-rn-drawer-example",
+    "slug": "react-native-rn-drawer-example",
+    "description": "Example app for react-native-rn-drawer",
+    "privacy": "public",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "jsEngine": "hermes",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

@@ -30,7 +30,7 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
   constructor(props: DrawerProps) {
     super(props);
     this.state = {
-      isOpen: true,
+      isOpen: false,
       isPressed: false,
       translateX: new Animated.Value(this.props.width || WIDTH_DEFAULT_DRAWER),
       bgOutside: new Animated.Value(0),

@@ -37,13 +37,16 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
       openDrawerOffset: 0
     };
 
-    if (this.props.openDrawerOffset) {
-      if (typeof this.props.openDrawerOffset === "function") {
-        this._openDrawerOffset = this.props.openDrawerOffset({ width: VIEWPORT.width, height: VIEWPORT.height })
-      } else {
-        this._openDrawerOffset = this.props.openDrawerOffset;
-      }
+    if (this.props.acceptPan) {
+      if (this.props.openDrawerOffset) {
+        if (typeof this.props.openDrawerOffset === "function") {
+          this._openDrawerOffset = this.props.openDrawerOffset({ width: VIEWPORT.width, height: VIEWPORT.height })
+        } else {
+          this._openDrawerOffset = this.props.openDrawerOffset;
+        }
+      };
     };
+
 
     this._pan.setValue({ x: (this.props.width || WIDTH_DEFAULT_DRAWER), y: 0 });
 

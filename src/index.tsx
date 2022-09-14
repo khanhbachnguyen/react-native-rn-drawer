@@ -26,8 +26,8 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
 
   private _openDrawerOffset: number = 0;
   private _panResponder = React.createRef<any>().current;
-  private _pan: Animated.ValueXY = new Animated.ValueXY();
-  
+  private _pan: Animated.ValueXY | any = new Animated.ValueXY();
+
   constructor(props: DrawerProps) {
     super(props);
     this.state = {

@@ -1,9 +1,9 @@
 # react-native-rn-drawer
 A React Native component for free-hand drawing on both iOS and Android.
 ## Feature
-+Draw with your finger and export an image from it.
-+Change the stroke color and thickness of the pen easily.
-+Full-customize UI.
++ Draw with your finger and export an image from it.
++ Change the stroke color and thickness of the pen easily.
++ Full-customize UI.
 ## Installation
 
 
@@ -57,10 +57,10 @@ export default function DrawerExample(){
 | isAnimated | boolean |  | true | If true active animation drawer |
 | width | number |  | `window.width - 70` | Width content drawer |
 | duration | number |  | 250 |  The duration of the open/close animation |
-| backgroundAnimation | [string,string] |  |  | Background ouside animation combined with isAnimation . attribute |
+| backgroundAnimation | [string,string] |  | ["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.2)"] | Background ouside animation combined with isAnimation . attribute |
 | acceptPan | boolean |  | true  | Allow for drawer pan (on touch drag). Set to false to effectively disable the drawer while still allowing programmatic control. if isAnimated attribute = false, acceptPan auto set = false |
 | openDrawerOffset | `number`, `(viewport: {width: number, height: number})=> number`  |  | 100 |Can either be a integer (pixel value) or decimal (ratio of screen width).Defines the right hand margin when the drawer is open.  |
-|useNativeDriver | boolean | false | | Animated values are only compatible with one driver so if you use native driver when starting an animation on a value, make sure every animation on that value also uses the native driver.| 
+|useNativeDriver | boolean |  | false | Animated values are only compatible with one driver so if you use native driver when starting an animation on a value, make sure every animation on that value also uses the native driver.| 
 
 ## :memo: Creators 
 * :four_leaf_clover:  [https://github.com/khanhbachnguyen](https://github.com/khanhbachnguyen)

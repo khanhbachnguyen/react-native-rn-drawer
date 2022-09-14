@@ -6,8 +6,10 @@ export const drawerStyle = StyleSheet.create({
     drawer: {
         flex: 1,
         alignItems: "flex-end",
-        width: "100%",
-        height: "100%",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
         position: "absolute",
         zIndex: 99999,
     },

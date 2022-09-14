@@ -64,7 +64,7 @@ export default function App() {
         <View style={{ height: 1000, padding: 20 }}>
           <View style={{ height: 150, justifyContent: "center" }}>
             <Text style={{ fontWeight: "700", fontSize: 20 }}>react-native-rn-drawer</Text>
-            <Text style={{}}>version: 0.1.0</Text>
+            <Text style={{}}>version: 0.1.6</Text>
           </View>
 
           <View>

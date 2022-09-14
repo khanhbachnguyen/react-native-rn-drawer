@@ -38,7 +38,7 @@ export type DrawerProps = {
      * if isAnimated attribute = false, acceptPan auto set = false
      * `default: true`
      */
-     acceptPan?: boolean
+    acceptPan?: boolean
 
     /**
      * Can either be a integer (pixel value) or decimal (ratio of screen width). 

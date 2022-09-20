@@ -11,7 +11,8 @@ export const drawerStyle = StyleSheet.create({
         right: 0,
         bottom: 0,
         position: "absolute",
-        zIndex: 99999,
+        zIndex: 9999,
+        backgroundColor: "red"
     },
     clickOutSideHiden: {
         backgroundColor: "transparent",
@@ -25,11 +26,11 @@ export const drawerStyle = StyleSheet.create({
         right: 0,
         alignItems: "flex-end",
         backgroundColor: 'transparent',
-        zIndex: 999999,
+        zIndex: 9999999,
     },
     overlay: {
         position: "absolute",
-        zIndex: 99,
+        // zIndex: 999,
         backgroundColor: "transparent",
         width,
         height

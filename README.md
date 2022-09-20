@@ -59,7 +59,7 @@ export default function DrawerExample(){
 | duration | number |  | 250 |  The duration of the open/close animation |
 | backgroundAnimation | [string,string] |  | ["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.2)"] | Background ouside animation combined with isAnimation . attribute |
 | acceptPan | boolean |  | true  | Allow for drawer pan (on touch drag). Set to false to effectively disable the drawer while still allowing programmatic control. if isAnimated attribute = false, acceptPan auto set = false |
-| openDrawerOffset | `number`, `(viewport: {width: number, height: number})=> number`  |  | 100 |Can either be a integer (pixel value) or decimal (ratio of screen width).Defines the right hand margin when the drawer is open.  |
+| openDrawerOffset | `number`, `(viewport: {width: number, height: number})=> number`  |  | 20 |Can either be a integer (pixel value) or decimal (ratio of screen width).Defines the right hand margin when the drawer is open.  |
 |useNativeDriver | boolean |  | false | Animated values are only compatible with one driver so if you use native driver when starting an animation on a value, make sure every animation on that value also uses the native driver.| 
 
 ## :memo: Creators 

@@ -8,8 +8,8 @@ const { width } = Dimensions.get("window");
 const VIEWPORT = Dimensions.get("window");
 const DURATION: number = 250; // default duration animated
 const WIDTH_DEFAULT_DRAWER: number = width - 70; // default content width drawer
-const DEFAULT_DRAWER_OFFSET: number = 100; // Defines the right hand margin when the drawer is open
-const ANIMATED_BACKGROUND_OUSIDE: [string, string] = ["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.2)"]; // background 
+const DEFAULT_DRAWER_OFFSET: number = 20; // Defines the right hand margin when the drawer is open
+const ANIMATED_BACKGROUND_OUSIDE: [string, string] = ["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.2)"]; // background animation
 
 
 class Drawer extends React.Component<DrawerProps, DrawerState> {
@@ -21,6 +21,8 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
     duration: DURATION,
     useNativeDriver: false,
     openDrawerOffset: DEFAULT_DRAWER_OFFSET,
+    backgroundAnimation: ANIMATED_BACKGROUND_OUSIDE,
+    backgroundColor: "rgba(0, 0, 0, 0.2)",
     acceptPan: true
   };
 
@@ -33,7 +35,7 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
     this.state = {
       isOpen: false,
       isPressed: false,
-      translateX: new Animated.Value(this.props.width || WIDTH_DEFAULT_DRAWER),
+      translateX: new Animated.Value(this.props.width!),
       bgOutside: new Animated.Value(0),
       openDrawerOffset: 0
     };
@@ -41,14 +43,14 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
     if (this.props.acceptPan) {
       if (this.props.openDrawerOffset) {
         if (typeof this.props.openDrawerOffset === "function") {
-          this._openDrawerOffset = this.props.openDrawerOffset({ width: VIEWPORT.width, height: VIEWPORT.height })
+          this._openDrawerOffset = this.props.openDrawerOffset({ "width": VIEWPORT.width, "height": VIEWPORT.height })
         } else {
           this._openDrawerOffset = this.props.openDrawerOffset;
         }
       };
     };
 
-    this._pan.setValue({ x: (this.props.width || WIDTH_DEFAULT_DRAWER), y: 0 });
+    this._pan.setValue({ x: (this.props.width!), y: 0 });
 
   };
 
@@ -66,6 +68,7 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
   };
 
   private _handlePanResponderGrant = (): void => {
+    let x = this._pan.x._value as any;
     this.setState({ isPressed: true });
     this._pan.setOffset({ "x": this._pan.x._value, "y": 0 });
   };
@@ -93,12 +96,12 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
       Animated.parallel([
         Animated.timing(this._pan.x, {
           toValue: 0,
-          duration: this.props.duration || DURATION,
+          duration: this.props.duration,
           useNativeDriver: !!this.props.useNativeDriver
         }),
         Animated.timing(this.state.bgOutside, {
           toValue: 1,
-          duration: this.props.duration || DURATION,
+          duration: this.props.duration,
           useNativeDriver: !!this.props.useNativeDriver
         }),
       ]).start();
@@ -108,13 +111,13 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
   private _animationClose = (): void => {
     Animated.parallel([
       Animated.timing(this._pan.x, {
-        toValue: this.props.width || WIDTH_DEFAULT_DRAWER,
-        duration: this.props.duration || DURATION,
+        toValue: this.props.width!,
+        duration: this.props.duration,
         useNativeDriver: !!this.props.useNativeDriver
       }),
       Animated.timing(this.state.bgOutside, {
         toValue: 0,
-        duration: this.props.duration || DURATION,
+        duration: this.props.duration,
         useNativeDriver: !!this.props.useNativeDriver
       }),
     ]).start(() => {
@@ -141,7 +144,7 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
     let contentDrawer: any = {
       ...styles.contentDrawer,
       ...this.props.style as object,
-      "width": this.props.width || WIDTH_DEFAULT_DRAWER,
+      "width": this.props.width,
       "transform": [{ translateX: this._pan.x }]
     };
 
@@ -153,13 +156,13 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
     });
 
     if (this.state.isOpen) {
-      drawer["backgroundColor"] = this.props.backgroundColor || "rgba(0, 0, 0, 0.2)";
+      drawer["backgroundColor"] = this.props.backgroundColor;
       contentDrawer["transform"] = [{ translateX: 0 }];
 
       if (this.props.isAnimated) {
         drawer["backgroundColor"] = this.state.bgOutside.interpolate({
           "inputRange": [0, 1],
-          "outputRange": this.props.backgroundAnimation || ANIMATED_BACKGROUND_OUSIDE,
+          "outputRange": this.props.backgroundAnimation!,
         });
         contentDrawer["transform"] = [{ translateX: this._pan.x }];
       }
@@ -175,17 +178,11 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
           )
         }
 
-        <Animated.View
-          style={{
-            ...contentDrawer,
-            width: (this.props.width || WIDTH_DEFAULT_DRAWER) + this._openDrawerOffset,
-          }}
-          {...this._panResponder.panHandlers}
-        >
+        <Animated.View style={{ ...contentDrawer, "width": (this.props.width!) + this._openDrawerOffset }}{...this._panResponder.panHandlers}>
           <Animated.View style={{
             height: "100%",
-            width: this.props.width || WIDTH_DEFAULT_DRAWER,
-            backgroundColor: "#ddd",
+            width: this.props.width,
+            backgroundColor: "#FFFF",
           }}>
             {this.props.children}
           </Animated.View>

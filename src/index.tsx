@@ -68,7 +68,6 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
   };
 
   private _handlePanResponderGrant = (): void => {
-    let x = this._pan.x._value as any;
     this.setState({ isPressed: true });
     this._pan.setOffset({ "x": this._pan.x._value, "y": 0 });
   };

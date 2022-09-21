@@ -138,9 +138,10 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
 
   render(): React.ReactNode | JSX.Element | null {
 
-    let drawer: any = { ...styles.drawer };
+    let drawer: any = { ...styles.drawer, "height": VIEWPORT.height };
 
     let contentDrawer: any = {
+      "height": VIEWPORT.height,
       ...styles.contentDrawer,
       ...this.props.style as object,
       "width": this.props.width,
@@ -177,7 +178,10 @@ class Drawer extends React.Component<DrawerProps, DrawerState> {
           )
         }
 
-        <Animated.View style={{ ...contentDrawer, "width": (this.props.width!) + this._openDrawerOffset }}{...this._panResponder.panHandlers}>
+        <Animated.View
+          {...this._panResponder.panHandlers}
+          style={{ ...contentDrawer, "height": VIEWPORT.height, "width": (this.props.width!) + this._openDrawerOffset }}
+        >
           <Animated.View style={{
             height: "100%",
             width: this.props.width,

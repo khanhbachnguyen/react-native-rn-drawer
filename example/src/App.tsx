@@ -14,22 +14,17 @@ export default function App() {
 
   return (
     <>
-      <TouchableOpacity onPress={toggleDrawer} style={{ paddingTop: 120 }}>
-        <Text>Click Me!!!</Text>
-      </TouchableOpacity>
-      <Drawer
-        acceptPan={true}
-        openDrawerOffset={20}
-        isAnimated={isAnimated}
-        ref={drawerRef}
-      >
-        <View style={{ flex: 1 }}>
-          <TouchableOpacity onPress={toggleDrawer} style={{ marginTop: 120 }}>
-            <Text>Click Me!!!</Text>
-          </TouchableOpacity>
-          <Text>xin chào</Text>
-        </View>
-      </Drawer>
+      <View style={{}}>
+        <Text>Hahahhha</Text>
+        <TouchableOpacity>
+          <Text>Open drawer</Text>
+        </TouchableOpacity>
+        <Drawer acceptPan={true}>
+          <View>
+            <Text>xini chào</Text>
+          </View>
+        </Drawer>
+      </View>
     </>
 
   )

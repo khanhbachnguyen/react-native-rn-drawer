@@ -6,6 +6,8 @@ A React Native component for free-hand drawing on both iOS and Android.
 + Full-customize UI.
 ## Installation
 
+## :atom: Live Demo
+live [**example**](https://codesandbox.io/s/condescending-dust-fr1y7e?file=/src/App.js) here
 
 ```sh
 npm install --save react-native-rn-drawer
